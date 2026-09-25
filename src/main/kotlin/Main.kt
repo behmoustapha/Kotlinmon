@@ -147,5 +147,13 @@ fun main(){
     rival.afficheDetail()
     joueur.argents+=50
     joueur.afficheDetail()
+    println(especeSpringleaf.afficheArt())
+    println(especeSpringleaf.afficheArt(false))
+    println(especeFlamkip.afficheArt())
+    println(especeFlamkip.afficheArt(false))
+    println(especeAquamy.afficheArt())
+    println(especeAquamy.afficheArt(false))
+
+
 
 }
