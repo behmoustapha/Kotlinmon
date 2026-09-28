@@ -8,7 +8,9 @@ class Zone(
     var expZone: Int,
     var especesMonstres: MutableList<EspeceMonstre> = mutableListOf(),
     var zoneSuivante: Zone? = null,
-    var zonePrecedante: Zone? = null,
+    var zonePrecedente: Zone? = null,
 
 ) {
+    //TODO faire la méthode genereMonstre()
+    //TODO faire la méthode rencontreMonstre()
 }

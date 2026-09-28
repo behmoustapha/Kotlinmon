@@ -1,4 +1,5 @@
 import dresseur.Entraineur
+import monde.Zone
 import monstre.EspeceMonstre
 
 fun changeCouleur(message: String, couleur:String=""): String {
@@ -141,7 +142,12 @@ var especeGalum = EspeceMonstre(
     "Sérieux, stoïque, fiable"
 );
 
+var route1 = Zone(1,"Route ensoleillé",0,mutableListOf<EspeceMonstre>(especeAquamy,especeFlamkip))
+var route2 = Zone(2,"Route ensoleillé",0,mutableListOf<EspeceMonstre>(especeLaoumi,especeSpringleaf))
 fun main(){
+    route1.zoneSuivante = route2
+    route2.zonePrecedente = route1
+
     println(changeCouleur("Hello","rouge"))
     joueur.afficheDetail()
     rival.afficheDetail()
