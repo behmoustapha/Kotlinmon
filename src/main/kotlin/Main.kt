@@ -1,6 +1,7 @@
 import dresseur.Entraineur
 import monde.Zone
 import monstre.EspeceMonstre
+import monstre.IndividuMonstre
 
 fun changeCouleur(message: String, couleur:String=""): String {
     val reset = "\u001B[0m"
@@ -16,10 +17,9 @@ fun changeCouleur(message: String, couleur:String=""): String {
     }
     return "$codeCouleur$message$reset"
 }
-
 var joueur = Entraineur(1, "Sacha", 100)
 var rival = Entraineur(2,"Regis",200)
-var especeSpringleaf = EspeceMonstre(
+var especeSpringLeaf = EspeceMonstre(
     1,
     "Springleaf",
     "Graine",
@@ -143,7 +143,7 @@ var especeGalum = EspeceMonstre(
 );
 
 var route1 = Zone(1,"Route ensoleillé",0,mutableListOf<EspeceMonstre>(especeAquamy,especeFlamkip))
-var route2 = Zone(2,"Route ensoleillé",0,mutableListOf<EspeceMonstre>(especeLaoumi,especeSpringleaf))
+var route2 = Zone(2,"33 rue du colonel delatour",0,mutableListOf<EspeceMonstre>(especeLaoumi,especeSpringLeaf))
 fun main(){
     route1.zoneSuivante = route2
     route2.zonePrecedente = route1
@@ -153,12 +153,17 @@ fun main(){
     rival.afficheDetail()
     joueur.argents+=50
     joueur.afficheDetail()
-    println(especeSpringleaf.afficheArt())
-    println(especeSpringleaf.afficheArt(false))
+    println(especeSpringLeaf.afficheArt())
+    println(especeSpringLeaf.afficheArt(false))
     println(especeFlamkip.afficheArt())
     println(especeFlamkip.afficheArt(false))
     println(especeAquamy.afficheArt())
     println(especeAquamy.afficheArt(false))
+    val monstre1 = IndividuMonstre(1, "springleaf",especeSpringLeaf,null,1500.0)
+    val monstre2 = IndividuMonstre(2, "flamkip", especeFlamkip,null,1500.0)
+    val monstre3 = IndividuMonstre(3, "aquamy", especeAquamy,null,3800.0)
+
+
 
 
 
