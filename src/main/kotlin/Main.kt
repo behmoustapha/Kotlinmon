@@ -2,6 +2,10 @@ import dresseur.Entraineur
 import monde.Zone
 import monstre.EspeceMonstre
 import monstre.IndividuMonstre
+import java.io.FileDescriptor
+import java.io.FileOutputStream
+import java.io.PrintStream
+
 
 fun changeCouleur(message: String, couleur:String=""): String {
     val reset = "\u001B[0m"
@@ -142,13 +146,35 @@ var especeGalum = EspeceMonstre(
     "Sérieux, stoïque, fiable"
 );
 
+var especeOgre = EspeceMonstre(
+    13,
+    "Ogre",
+    "Minéral",
+    12,
+    15,
+    6,
+    8,
+    12,
+    55,
+    9.0,
+    13.0,
+    4.0,
+    6.5,
+    10.5,
+    13.0,
+    "Golem ancien de pierre, yeux lumineux en garde.",
+    "Peut rester immobile des heures comme une statue.",
+    "Sérieux, stoïque, fiable"
+);
+
 var route1 = Zone(1,"Route ensoleillé",0,mutableListOf<EspeceMonstre>(especeAquamy,especeFlamkip))
 var route2 = Zone(2,"33 rue du colonel delatour",0,mutableListOf<EspeceMonstre>(especeLaoumi,especeSpringLeaf))
 fun main(){
+    System.setOut(PrintStream(FileOutputStream(FileDescriptor.out), true, "UTF-8"))
+
     route1.zoneSuivante = route2
     route2.zonePrecedente = route1
-
-    println(changeCouleur("Hello","rouge"))
+/**
     joueur.afficheDetail()
     rival.afficheDetail()
     joueur.argents+=50
@@ -159,12 +185,14 @@ fun main(){
     println(especeFlamkip.afficheArt(false))
     println(especeAquamy.afficheArt())
     println(especeAquamy.afficheArt(false))
+
     val monstre1 = IndividuMonstre(1, "springleaf",especeSpringLeaf,null,1500.0)
     val monstre2 = IndividuMonstre(2, "flamkip", especeFlamkip,null,1500.0)
     val monstre3 = IndividuMonstre(3, "aquamy", especeAquamy,null,3800.0)
 
-
-
+*/
+    println(especeOgre.afficheArt())
+    println(especeOgre.afficheArt(false))
 
 
 }
