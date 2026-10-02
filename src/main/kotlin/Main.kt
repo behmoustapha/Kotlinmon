@@ -7,6 +7,7 @@ import java.io.FileOutputStream
 import java.io.PrintStream
 
 
+
 fun changeCouleur(message: String, couleur:String=""): String {
     val reset = "\u001B[0m"
     val codeCouleur = when (couleur.lowercase()) {
@@ -166,7 +167,8 @@ var especeOgre = EspeceMonstre(
     "Peut rester immobile des heures comme une statue.",
     "Sérieux, stoïque, fiable"
 );
-
+var testogre = IndividuMonstre(1,"Ogre",especeOgre,null,1500.0 )
+var testflamkip = IndividuMonstre(2,"Flamkip",especeFlamkip,null,1000.0 )
 var route1 = Zone(1,"Route ensoleillé",0,mutableListOf<EspeceMonstre>(especeAquamy,especeFlamkip))
 var route2 = Zone(2,"33 rue du colonel delatour",0,mutableListOf<EspeceMonstre>(especeLaoumi,especeSpringLeaf))
 fun main(){
@@ -185,14 +187,20 @@ fun main(){
     println(especeFlamkip.afficheArt(false))
     println(especeAquamy.afficheArt())
     println(especeAquamy.afficheArt(false))
+    println(especeOgre.afficheArt())
+    println(especeOgre.afficheArt(false))
 
     val monstre1 = IndividuMonstre(1, "springleaf",especeSpringLeaf,null,1500.0)
     val monstre2 = IndividuMonstre(2, "flamkip", especeFlamkip,null,1500.0)
     val monstre3 = IndividuMonstre(3, "aquamy", especeAquamy,null,3800.0)
 
-*/
-    println(especeOgre.afficheArt())
-    println(especeOgre.afficheArt(false))
+
+    println(testflamkip.pv)
+    println(testogre.attaquer(testflamkip))
+    println(testflamkip.nom)
+    */
+    testflamkip.afficheDetail()
+
 
 
 }

@@ -2,6 +2,10 @@ package monstre
 import dresseur.Entraineur
 import kotlin.math.pow
 import kotlin.math.roundToInt
+import java.io.File
+import kotlin.math.max
+import monstre.EspeceMonstre
+
 class IndividuMonstre(
     var id: Int,
     var nom: String,
@@ -64,6 +68,72 @@ class IndividuMonstre(
         this.pvMax += (espece.modPv.roundToInt() * this.potentiel.roundToInt()) + (-5..5).random()
     }
 
+    fun attaquer(cible: monstre.IndividuMonstre){
+        /**
+         * Attaque un autre [IndividuMonstre] et inflige des dégâts.
+         *
+         * Les dégâts sont calculés de manière très simple pour le
+        moment :
+         * `dégâts = attaque - (défense / 2)` (minimum 1 dégât).
+         *
+         * @param cible Monstre cible de l'attaque.
+         */
+        var degatBrut = this.attaque
+        var degatTotal = degatBrut - (this.defense / 2)
+        if (degatTotal < 1){
+            var degatTotal = 1
+        }
+        var pvAvant = cible.pv
+        cible.pv -= degatTotal
+        var pvApres = cible.pv
+            println("${this.nom} inflige ${(pvAvant - pvApres)} dégats à ${cible.nom}")
+    }
 
+    fun renommer(){
+        /**
+         * Demande au joueur de renommer le monstre.
+         * Si l'utilisateur entre un texte vide, le nom n'est pas
+        modifié.
+         */
+        print("Renommer ${this.nom} ? Oui/Non: ")
+        var answ = readln()
+        if (answ.lowercase() == "oui"){
+            print("Nouveau nom: ")
+            var nouveauNom = readln()
+            this.nom = nouveauNom
+
+        }
+    }
+
+    fun afficheDetail(){
+        var artLine = ""
+        var detailLine = ""
+        var test = espece.afficheArt()
+        var artLines: List<String> = test.lines()
+        var details: MutableList<String> = mutableListOf<String>(
+            "Nom: ${this.nom} Niveau: ${this.niveau}",
+            "Exp: ${this.exp}",
+            "Pv: ${this.pv}/${this.pvMax}",
+            "Atq: ${this.attaque} Def: ${this.defense} Vitesse: ${this.vitesse}",
+            "AtqSpe: ${this.attaqueSpe} DefSpe: ${this.defenseSpe}"
+        )
+        var maxArtWidth: Int = artLines.size
+        var maxLines = max(artLines.size, details.size)
+        for (i in 0..(maxLines - 1)) {
+            if (i < artLines.size) {
+                var artLine = artLines[i]
+            } else {
+                var artLine = ""
+            }
+            if (i < details.size) {
+                var detailLine = details[i]
+            } else {
+                var detailLine = ""
+            }
+            var paddedArt = artLine.padEnd(maxArtWidth + 4)
+            println(paddedArt + detailLine)
+        }
+
+    }
 
 }
